@@ -1,0 +1,26 @@
+﻿Сборка начата 17.12.2015 19:41:09.
+     1>Проект "C:\Иван\Лаба!\Lab3_postfix\sln\Postfix\test\test.vcxproj" в узле 2 (целевые объекты build).
+     1>InitializeBuildStatus:
+         Обращение к "Debug\test.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I../../../include /I../../../gtest /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\test\test_Postfix.cpp ..\..\..\test\test_Stack.cpp
+         test_Stack.cpp
+     1>c:\иван\лаба!\lab3_postfix\include\stack.h(22): error C2146: синтаксическая ошибка: отсутствие ";" перед идентификатором "Pop"
+                 c:\иван\лаба!\lab3_postfix\include\stack.h(25): см. ссылку на создание экземпляров класса шаблон при компиляции "Stack<VT>"
+     1>c:\иван\лаба!\lab3_postfix\include\stack.h(22): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+     1>c:\иван\лаба!\lab3_postfix\include\stack.h(22): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+     1>c:\иван\лаба!\lab3_postfix\include\stack.h(22): warning C4183: Pop: отсутствие возвращаемого типа; предполагается функция-член, возвращающая "int"
+         test_Postfix.cpp
+     1>c:\иван\лаба!\lab3_postfix\include\stack.h(22): error C2146: синтаксическая ошибка: отсутствие ";" перед идентификатором "Pop"
+                 c:\иван\лаба!\lab3_postfix\include\stack.h(25): см. ссылку на создание экземпляров класса шаблон при компиляции "Stack<VT>"
+     1>c:\иван\лаба!\lab3_postfix\include\stack.h(22): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+     1>c:\иван\лаба!\lab3_postfix\include\stack.h(22): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+     1>c:\иван\лаба!\lab3_postfix\include\stack.h(22): warning C4183: Pop: отсутствие возвращаемого типа; предполагается функция-член, возвращающая "int"
+     1>c:\иван\лаба!\lab3_postfix\include\postfix.h(19): error C2864: Postfix<VT>::Str: в пределах класса могут быть инициализированы только статические константные данные-члены целого типа
+                 c:\иван\лаба!\lab3_postfix\include\postfix.h(28): см. ссылку на создание экземпляров класса шаблон при компиляции "Postfix<VT>"
+         Создание кода...
+     1>Построение проекта "C:\Иван\Лаба!\Lab3_postfix\sln\Postfix\test\test.vcxproj" завершено (целевые объекты build) с ошибкой.
+
+СБОЙ построения.
+
+Затраченное время: 00:00:01.57

@@ -1,8 +1,3 @@
 #include "List.h"
 
-
-void main(){
-
-return;
-
-}
+#include <gtest.h>

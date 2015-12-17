@@ -1,5 +1,3 @@
-void main(){
+#include "Postfix.h"
 
-return;
-
-}
+#include <gtest.h>

@@ -1,5 +1,3 @@
-void main(){
+#include "Stack.h"
 
-return;
-
-}
+#include <gtest.h>
