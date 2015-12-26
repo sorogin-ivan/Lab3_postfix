@@ -1,0 +1,197 @@
+template <class VT>
+List<VT>::List(void){
+    First = 0;
+}
+
+template <class VT>
+List<VT>::List(const Node<VT>* node){
+    First = new Node<VT>(node);
+}
+
+template <class VT>
+List<VT>::List(const VT& keyX){
+    First = new Node<VT>(keyX);
+}
+
+template <class VT>
+List<VT>::List(const List<VT>* list){
+    Node<VT>* tmp = list->First;
+    First = new Node<VT>(tmp->key);
+    Node<VT>* FirstX = First;
+    tmp = tmp->Next;
+    First = First->Next;
+    while(tmp != 0){
+        First = new Node<VT>(tmp->key);
+        tmp = tmp->Next;
+        First = First->Next;
+    }
+}
+
+template <class VT>
+List<VT>::~List(){
+    delete First;
+}
+
+
+template <class VT>
+
+int List<VT>::operator== (const List& list)const{
+    Node<VT>* FirstX = First;
+    Node<VT>* FirstY = list.First;
+    while ((FirstX != 0) && (FirstY != 0)){
+        if(FirstX->key != FirstY->key)
+            return 0;
+        FirstX = FirstX->Next;
+        FirstX = FirstY->Next;
+    }
+
+    if (FirstX != FirstY)
+        return 0;
+    return 1;
+}
+
+template <class VT>
+int List<VT>::operator!= (const List& list)const{
+    return !(*this == list);
+}
+
+
+template <class VT>
+Node<VT>* List<VT>::FindFirstIn(const VT& keyX) const{
+    if (First == 0)
+        throw("List doesn't exist");
+      
+    Node<VT>* node = First;
+    VT tmp = keyX;
+    do {
+        if (node->key == keyX)
+            break;
+        node = node->Next;
+    } while (node != 0);
+
+    if (node == 0){
+        delete node;
+        throw("Not found");
+    }
+
+    return node;
+};
+
+template <class VT>
+int List<VT>::Push(const VT& keyX){
+    Node<VT>* node;
+    try {
+        node = new Node<VT>(keyX);
+    }
+    catch ("Can't") {
+        return 1;
+    }
+    
+    node->next = First;
+    First = node;
+
+    return 0;
+}
+
+template <class VT>
+int List<VT>::PushAfter(const VT& findKey, const VT& keyX){
+    Node<VT>* firstOccurrence;
+    
+    try {
+        firstOccurrence = find(findKey);
+    }
+    catch ("Can't") {
+        return pushEnd(keyX);
+    }
+
+    Node<VT>* tmp = firstOccurrence->Next;
+
+    Node<VT>* node;
+    try{
+        node = new Node<VT>(keyX);
+    } catch (...) {
+        return 1;
+    }
+
+    firstOccurrence->Next = node;
+    node->Next = tmp;
+
+    return 0;
+}
+
+template <class VT>
+int List<VT>::PushBefore(const VT& findKey, const VT& keyX){
+    if (First == 0)
+        throw("List doesn't exist");
+
+    if (First->key == keyX)
+        return push(keyX);
+
+    if (First->Next == 0)
+        throw("Wasn't found.");
+
+    Node<VT>* prewNode = First;
+    Node<VT>* node = First->Next;
+
+    while ( (node->Next != 0) && (node->key != keyX) ) {
+        prewNode = node;
+        node = prewNode->Next;
+    } 
+
+    if ( (node->Xext == 0) && (node->key != keyX) )
+        throw("findKey wasn't found");
+
+    Node<VT> *tmp;
+    try{
+        tmp = new Node<VT>(keyX);
+    } catch ("Can't") {
+        return 1;
+    }
+
+    prewNode->Next = tmp;
+    tmp->Next = node;
+
+    return 0;
+}
+
+template <class VT>
+int List<VT>::PushEnd(const VT& keyX){
+    if (First == 0)
+        return push(keyX);
+
+    Node<VT>* node;
+    try {
+        node = new Node<VT>(keyX);
+    } catch ("Can't") {
+        return 1;
+    }
+
+    Node<VT>* FirstX = First;
+
+    while (FirstX->Next != 0)
+        FirstX = FirstX->Next;
+        
+    FirstX->Next = node;
+
+    return 0;
+}
+
+template <class VT>
+void List<VT>::Remuve(const VT& Dkey){
+    Node<VT>* Dnode = find(Dkey);
+
+    if (First == Dnode) {
+        First = First->Next;
+        return;
+    }
+
+    Node<VT>* FirstX = First;
+    while (FirstX->Next != Dnode)
+        FirstX = FirstX->Next;
+    FirstX->Next = Dnode->Next;
+}
+
+template <class VT>
+Node<VT>* List<VT>::GetFirst(void) const{
+    return First;
+}

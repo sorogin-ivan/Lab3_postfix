@@ -1,21 +1,26 @@
-#ifndef _NODE_H_
-#define _NODE_H_
+#ifndef __NODE_H__
+
+#define __NODE_H__
 
 #include <iostream>
+
 #include <cstdlib>
-#include <string>
+
+const int MAX_STRING = 100000;
 
 using namespace std;
 
-template <class VT>
-class Node {
-    VT key;
-    Node<VT>* Next;
+template <class PType>
 
-    Node(void);
-    Node(const VT& keyX);
-    Node(const Node<VT>* node);
-    ~Node(void);
+class Node {
+
+public:
+
+	PType key;
+	Node<PType>* pNext;
+	Node() {pNext = 0;};
+	Node(const PType& k) {key = k; pNext = 0;};
+
 };
 
 #endif

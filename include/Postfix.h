@@ -1,32 +1,27 @@
 #ifndef _POSTFIX_H_
 #define _POSTFIX_H_
-#include "stack.h"
 
-#define _SPACE_ ' '
+#include "Stack.h"
+#include <string>
 
-typedef double VT;
+using namespace std;
 
-template <class VT>
 class Postfix {
 private:
-	int RightBr(void);
-	void DecreasePriority(int);
-	int  PriorietyOperator(const char)const;
-	int  IsOperator(const char)const;
-	int  IsOperand(const char)const;
-	Stack<VT> Res;
-	Stack<VT> Operator;
-	string Str = '0';
-public:
-	Postfix();
-	~Postfix();
+	
+	Stack<char>* res; 
+	Stack<char>* oper;	
+	string v1; 
 
-	void ProcStr(void);
-	void SetString(const string&);
-	VT calculate(void);
-	void GetValuesOfVariables(void);
+public:
+	Postfix(const string&);
+	~Postfix();
+	int operaci (const char);
+	int prioritet (const char); 
+	char skobka (); 
+	char ponizhenie (char a); 
+	string printres (); 
+	string postfix (); 
 };
  
-
-
 #endif

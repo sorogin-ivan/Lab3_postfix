@@ -1,0 +1,9 @@
+class Node {
+    VT key;
+    Node<VT>* Next;
+
+    Node(void) { Next = 0; };
+    Node(const VT& keyX) { key = keyX; Next = 0; };
+    Node(const Node<VT>* node) { key = node->key;  Next= node->Next; };
+    ~Node(void) { delete Next; };
+};
