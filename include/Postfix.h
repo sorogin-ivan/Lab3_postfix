@@ -1,27 +1,23 @@
-#ifndef _POSTFIX_H_
-#define _POSTFIX_H_
+#ifndef __POSTFIX_H__
+#define __POSTFIX_H__
 
-#include "Stack.h"
+#include "stack.h"
 #include <string>
+#include <map>
 
 using namespace std;
 
-class Postfix {
-private:
-	
-	Stack<char>* res; 
-	Stack<char>* oper;	
-	string v1; 
+typedef float ExpType;
 
+class Postfix
+{
+private:
+	int Operator(char);
+	int Line(const string&)const;
+	void Bracket(const string&)const;
 public:
-	Postfix(const string&);
-	~Postfix();
-	int operaci (const char);
-	int prioritet (const char); 
-	char skobka (); 
-	char ponizhenie (char a); 
-	string printres (); 
-	string postfix (); 
+	string Record(const string&)const;
+	ExpType Count(const string&, map<char, ExpType>);
 };
- 
+
 #endif

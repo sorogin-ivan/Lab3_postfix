@@ -24,6 +24,7 @@ public:
 	void PushEnd (const PType&);
 	void Remove (const PType& key);
 	Node<PType>* GetFirst(void);
+	void Print();
 
 };
 
@@ -122,7 +123,7 @@ void List<PType>::PushEnd (const PType& key)
 {
 	if (pFirst == 0)
 	{
-		push(key);
+		Push(key);
 		return;
 	}
 	Node<PType>* node = new Node<PType>(key);
@@ -159,6 +160,20 @@ template <class PType>
 Node<PType>* List<PType>::GetFirst(void)
 {
     return pFirst;
+}
+
+
+//печачть списка
+
+template <class PType>
+void List<PType>::Print()
+{
+    Node<PType>* a = pFirst;
+    while (a!= 0) 
+	{
+        cout << a->key << " -> ";
+        a = a->pNext;
+    }
 }
 
 #endif

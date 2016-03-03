@@ -21,6 +21,10 @@ public:
 	bool IsEmpty () const;
 	void Push (const PType&);
 	PType Pop(void);
+	int operator==(const Stack<PType>& s)const;
+	int operator!=(const Stack<PType>& s)const;
+	void Print()const;
+	PType GetKey();
 
 };
 
@@ -72,13 +76,42 @@ void Stack<PType>::Push(const PType& key){
 
 //Удаление из стэка
 template <class PType>
-PType stack<PType>::pop(void)
+PType Stack<PType>::Pop(void)
 {
 	if (IsEmpty() == 1)
 		throw "Error: Stack Is Empty";
-	PType tmp = pList->getfirst()->key;
-	pList->remove(tmp);
+	PType tmp = pList->GetFirst()->key;
+	pList->Remove(tmp);
 	return tmp;
+};
+
+template <class PType>
+int Stack<PType>::operator==(const Stack<PType>& s)const
+{
+	return (*List == *(s.List));
+}
+
+template <class PType>
+int Stack<PType>::operator!= (const Stack<PType>& s)const
+{
+	return (*List != *(s.List));
+}
+
+template <class PType>
+void Stack<PType>::Print()const
+{
+	Stack<PType>* s = new Stack<PType>(*this);
+	while (!(s->IsEmpty()))
+		cout << s->Pop() << endl;
+}
+
+template <class PType>
+PType Stack<PType>::GetKey()
+{
+	if (IsEmpty())
+		throw
+		exception ("Stack is empty");
+	return List->getfirst()->key;
 }
 
 #endif
